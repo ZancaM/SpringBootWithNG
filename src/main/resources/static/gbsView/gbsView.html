@@ -1,0 +1,36 @@
+<!--Created by Matteo Zancanella on October 2016 MIT License - FHIR Starter Team-->
+<div class="doc-demo-content doc-content">
+    <div flex="" layout="column" style="z-index:1" class="layout-column flex">
+        <section class="demo-container md-whiteframe-z1" ng-class="{'show-source': demoCtrl.$showSource}">
+            <md-toolbar class="demo-toolbar md-primary _md _md-toolbar-transitions">
+                <div class="md-toolbar-tools">
+                    <h3 class="ng-binding">GBS App</h3>
+                </div>
+            </md-toolbar>
+            <md-content layout-padding ng-show="!showReviewScreen">
+                <form name="projectForm">
+                    <p>
+                        {{currentView.question}}
+                    </p>
+                    <!--<md-radio-group ng-show="currentView.options" ng-model="data.selected">-->
+                        <!--<md-radio-button ng-repeat = "(value,key) in currentView.options"  value="{{key}}"> {{value}} </md-radio-button>-->
+                    <!--</md-radio-group>-->
+                    <span ng-repeat="option in currentView.options">
+                        <md-button ng-repeat="(key,value) in option" ng-click = "answerSelected(key, value)" class="md-raised md-primary">{{value}}</md-button>
+                    </span>
+                </form>
+            </md-content>
+            <md-content layout-padding ng-show="showReviewScreen">
+                <md-list ng-cloak>
+                    <md-subheader class="md-no-sticky">Question Answered</md-subheader>
+                    <md-list-item ng-if="question.selectedValue" ng-repeat="question in config.workflow">
+                        <p> {{ question.question }} </p>
+                        <p class="md-secondary">{{question.actualValue}}</p>
+                </md-list-item>
+                <div>
+                    <md-button class="md-raised md-primary" ng-click="postToServer()" type="submit">Final Submit</md-button>
+                </div>
+            </md-content>
+        </section>
+    </div>
+</div>

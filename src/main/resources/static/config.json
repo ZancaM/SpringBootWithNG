@@ -1,0 +1,507 @@
+{
+
+  "serverToPost":"ADDRESS",
+  "workflow": {
+    "Q1": {
+      "type": "question",
+      "question": "Prior infant with invasive GBS? ",
+      "fieldType": "radio",
+      "options": [
+        {
+          "yes": "Yes"
+        },
+        {
+          "no": "No"
+        }
+      ],
+      "defaultOption": "no",
+      "action": {
+        "yes": {
+          "type": "jumpTo",
+          "value": "Q6"
+        },
+        "no": {
+          "type": "jumpTo",
+          "value": "Q2"
+        }
+      }
+    },
+    "Q2": {
+      "type": "question",
+      "question": "GBS in urine?",
+      "fieldType": "radio",
+      "options": [
+        {
+          "yes": "Yes"
+        },
+        {
+          "no": "No"
+        }
+      ],
+      "defaultOption": "no",
+      "action": {
+        "yes": {
+          "type": "jumpTo",
+          "value": "Q3"
+        },
+        "no": {
+          "type": "jumpTo",
+          "value": "Q5"
+        }
+      }
+    },
+    "Q3": {
+      "type": "question",
+      "question": "Anticipated Mode of Delivery?",
+      "fieldType": "radio",
+      "options": [
+        {
+          "vaginal": "Vaginal"
+        },
+        {
+          "csection": "C-Section"
+        }
+      ],
+      "defaultOption": "vaginal",
+      "action": {
+        "vaginal": {
+          "type": "complexAction"
+        },
+        "csection": {
+          "type": "complexAction"
+        }
+      }
+    },
+    "Q4": {
+      "type": "question",
+      "question": "Gestational Age?",
+      "fieldType": "radio",
+      "options": [
+        {
+          "<37wks": "Less than 37 weeks"
+        },
+        {
+          ">=37wks": "37 weeks or greater"
+        }
+      ],
+      "action": {
+        "<37wks": {
+          "type": "jumpTo",
+          "value": "Q9"
+        },
+        ">=37wks": {
+          "type": "jumpTo",
+          "value": "Q3"
+        }
+      }
+    },
+    "Q5": {
+      "type": "question",
+      "question": "GBS screen result?",
+      "fieldType": "radio",
+      "options": [
+        {
+          "positive": "Positive"
+        },
+        {
+          "negative": "Negative"
+        },
+        {
+          "unknown": "Unknown"
+        }
+      ],
+      "defaultOption": "unknown",
+      "action": {
+        "positive": {
+          "type": "jumpTo",
+          "value": "Q3"
+        },
+        "negative": {
+          "type": "jumpTo",
+          "value": "Q11"
+        },
+        "unknown": {
+          "type": "jumpTo",
+          "value": "Q1"
+        }
+      }
+    },
+    "Q6": {
+      "type": "question",
+      "question": "Penicillin Allergy?",
+      "fieldType": "radio",
+      "options": [
+        {
+          "yes": "Yes"
+        },
+        {
+          "no": "No"
+        }
+      ],
+      "defaultOption": "no",
+      "action": {
+        "yes": {
+          "type": "showReview"
+        },
+        "no": {
+          "type": "showReview"
+        }
+      }
+    },
+
+    "Q7": {
+      "type": "question",
+      "question": "Rupture of Membrane(ROM) >= 18 hours?",
+      "fieldType": "radio",
+      "options": [
+        {
+          "yes": "Yes"
+        },
+        {
+          "no": "No"
+        }
+      ],
+      "defaultOption": "no",
+      "action": {
+        "yes": {
+          "type": "recommend"
+        },
+        "no": {
+          "type": "jumpTo",
+          "value": "Q9"
+        }
+      }
+    },
+    "Q8": {
+      "type": "question",
+      "question": "Rupture of Membrane(ROM)?",
+      "fieldType": "radio",
+      "options": [
+        {
+          "yes": "Yes"
+        },
+        {
+          "no": "No"
+        }
+      ],
+      "defaultOption": "no",
+      "action": {
+        "yes": {
+          "type": "complexAction"
+        },
+        "no": {
+          "type": "complexAction"
+        }
+      }
+    },
+    "Q9": {
+      "type": "question",
+      "question": "Is temperature greater or equal to 100.4 Fahrenheit ?",
+      "fieldType": "radio",
+      "options": [
+        {
+          "yes": "Yes"
+        },
+        {
+          "no": "No"
+        }
+      ],
+      "defaultOption": "no",
+      "action": {
+        "yes": {
+          "type": "complexAction"
+        },
+        "no": {
+          "type": "complexAction"
+        }
+      }
+    },
+    "Q10": {
+      "type": "question",
+      "question": "On set labor?",
+      "fieldType": "radio",
+      "options": [
+        {
+          "yes": "Yes"
+        },
+        {
+          "no": "No"
+        }
+      ],
+      "defaultOption": "no",
+      "action": {
+        "yes": {
+          "type": "complexAction"
+        },
+        "no": {
+          "type": "complexAction"
+        }
+      }
+    },
+    "Q11": {
+      "type": "question",
+      "question": "Date of screening from current date ?",
+      "fieldType": "radio",
+      "options": [
+        {
+          "<5Wks": "Less than 5 weeks"
+        },
+        {
+          ">=5Wks": "Greater or equal than 5 weeks"
+        }
+      ],
+      "action": {
+        "<5Wks": {
+          "type": "recommend"
+        },
+        ">=5Wks": {
+          "type": "jumpTo",
+          "value": "Q4"
+        }
+      }
+    },
+    "Q12": {
+      "type": "question",
+      "question": "Intrapartum screen ?",
+      "fieldType": "radio",
+      "options": [
+        {
+          "positive": "Positive"
+        },
+        {
+          "negative": "Negative"
+        }
+      ],
+      "action": {
+        "positive": {
+          "type": "recommend"
+        },
+        "negative": {
+          "type": "jumpTo",
+          "value": "Q6"
+        }
+      }
+    },
+    "Q13": {
+      "type": "question",
+      "question": "Susceptible to Clindamycin and Erythromycin ? ",
+      "fieldType": "radio",
+      "options": [
+        {
+          "yes": "Yes"
+        },
+        {
+          "no": "No"
+        }
+      ],
+      "action": {
+        "yes": {
+          "type": "jumpTo",
+          "value": 0
+        },
+        "no": {
+          "type": "jumpTo",
+          "value": 0
+        }
+      }
+    },
+    "Q14": {
+      "type": "question",
+      "question": "Penicillin Allergy AARU/Cefazolin?",
+      "fieldType": "radio",
+      "options": [
+        {
+          "yes": "Yes"
+        },
+        {
+          "no": "No"
+        }
+      ],
+      "defaultOption": "no",
+      "action": {
+        "yes": {
+          "type": "jumpTo",
+          "value": "Q3"
+        },
+        "no": {
+          "type": "jumpTo",
+          "value": "Q4"
+        }
+      }
+    }
+  },
+  "complexActions": {
+    "Q8":{
+      "negativeAlgorithm1": {
+        "question": "Q8",
+        "workflow": {
+          "Q5": "negative"},
+        "action": {
+          "yes": {
+            "type": "jumpTo",
+            "value": "Q6"
+          },
+          "no": {
+            "type": "jumpTo",
+            "value": "Q9"
+          }
+        }
+      }
+    },
+    "Q9": {
+      "positiveAlgorithm1": {
+        "question": "Q9",
+        "workflow": {
+          "Q5": "positive",
+          "Q3": "csection"
+        },
+        "action": {
+          "yes": {
+            "type": "jumpTo",
+            "value": "Q10"
+          },
+          "no": {
+            "type": "jumpTo",
+            "value": "Q6"
+          }
+        }
+      },
+      "negativeAlgorithm2": {
+        "question": "Q9",
+        "workflow": {
+          "Q5": "negative",
+          "Q4": "<37wks"
+        },
+        "action": {
+          "yes": {
+            "type": "jumpTo",
+            "value": "Q6"
+          },
+          "no": {
+            "type": "jumpTo",
+            "value": "Q6"
+          }
+        }
+      },
+      "negativeAlgorithm3": {
+        "question": "Q9",
+        "workflow": {
+          "Q3": "vaginal",
+          "Q5": "negative",
+          "Q4": ">=37wks"
+        },
+        "action": {
+          "yes": {
+            "type": "jumpTo",
+            "value": "Q6"
+          },
+          "no": {
+            "type": "jumpTo",
+            "value": "Q12"
+          }
+        }
+      }
+    },
+    "Q10": {
+      "positiveAlgorithm2": {
+        "question": "Q10",
+        "workflow": {
+          "Q5": "positive",
+          "Q3": "csection"
+        },
+        "action": {
+          "yes": {
+            "type": "recommend"
+          },
+          "no": {
+            "type": "jumpTo",
+            "value": "Q6"
+          }
+        }
+      },
+      "negativeAlgorithm4": {
+        "question": "Q10",
+        "workflow": {
+          "Q3": "csection",
+          "Q5": "negative",
+          "Q4": ">=37wks"
+        },
+        "action": {
+          "yes": {
+            "type": "recommend"
+          },
+          "no": {
+            "type": "jumpTo",
+            "value": "Q8"
+          }
+        }
+      },
+      "negativeAlgorithm4": {
+        "question": "Q10",
+        "workflow": {
+          "Q5": "negative",
+          "Q4": "<37wks"
+        },
+        "action": {
+          "yes": {
+            "type": "jumpTo",
+            "value": "Q6"
+          },
+          "no": {
+            "type": "recommend"
+          }
+        }
+      }
+    },
+    "Q3": {
+      "negativeAlgorithm1": {
+        "question": "Q3",
+        "workflow": {
+          "Q5": "negative"
+        },
+        "action": {
+          "csection": {
+            "type": "jumpTo",
+            "value": "Q10"
+          },
+          "vaginal": {
+            "type": "jumpTo",
+            "value": "Q8"
+          }
+        }
+      },
+      "positiveAlgorithm1": {
+        "question": "Q3",
+        "workflow": {
+          "Q5": "positive"
+        },
+        "action": {
+          "csection": {
+            "type": "jumpTo",
+            "value": "Q9"
+          },
+          "vaginal": {
+            "type": "jumpTo",
+            "value": "Q6"
+          }
+        }
+      },
+      "regularAlgorithm1": {
+        "question": "Q3",
+        "workflow": {
+          "Q2": "yes"
+        },
+        "action": {
+          "csection": {
+            "type": "jumpTo",
+            "value": "Q9"
+          },
+          "vaginal": {
+            "type": "jumpTo",
+            "value": "Q6"
+          }
+        }
+      }
+    }
+  }
+}
